@@ -124,3 +124,85 @@ System recreates its periodic schedule automatically.
 Self-healing behavior.
 
 # Scheduler → Task → Notification Flow
+
+The Task Creation Flow
+
+![Task Creation Flow Diagram](backend/docs/images/task_creation_flow.drawio.png)
+
+The Data Flow Summary
+
+![Data Flow Summary Diagram](backend/docs/images/data_flow_summary.drawio.png)
+
+# Setup Instructions
+
+1. Backend Setup
+   
+Clone repository
+```
+git clone https://github.com/Hafsusu/scheduled-task-notification-engine.git
+cd backend
+
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
+
+python manage.py migrate
+
+python manage.py createsuperuser
+```
+
+2. Redis Setup
+```
+#macOS
+brew install redis
+brew services start redis
+
+#Ubuntu/Debian
+sudo apt-get install redis-server
+sudo systemctl start redis-server
+
+#Windows
+choco install redis-64
+```
+
+3. Celery Setup
+   
+Terminal 1 - Start Redis
+```
+redis-server
+```
+
+Terminal 2 - Start Celery Worker
+```
+cd backend
+celery -A backend worker -l info -Q celery,reports
+```
+
+Terminal 3 - Start Celery Beat
+```
+celery -A backend beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+```
+
+Terminal 4 - Start Django
+```
+python manage.py runserver
+```
+4. Frontend Setup
+```
+cd frontend
+npm install
+npm start
+```
+
+# Access the application
+
+Frontend 
+```
+http://localhost:5173
+```
+
+Backend API
+```
+http://localhost:8000/api
+```
