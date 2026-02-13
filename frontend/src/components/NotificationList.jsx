@@ -155,7 +155,7 @@ export default function NotificationList({ onStatsUpdate }) {
   return (
     <div className="bg-gray-800/90 backdrop-blur-sm rounded-2xl shadow-2xl border border-gray-700/50 overflow-x-hidden transition-all duration-300 hover:border-gray-600 sticky top-6">
       <div className="bg-gradient-to-r from-purple-900 via-purple-800 to-purple-900 px-4 sm:px-6 py-5 border-b border-purple-700/50">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="flex flex-col sm:items-center justify-between gap-4">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-white/10 rounded-lg">
               <Bell className="w-6 h-6 text-white" />
@@ -253,7 +253,7 @@ export default function NotificationList({ onStatsUpdate }) {
                     <div className="flex-1 min-w-0 w-full">
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-1">
                         <div className="flex items-center gap-2">
-                          <h4 className={`font-semibold truncate break-words ${
+                          <h4 className={`font-semibold line-clamp-3 break-words ${
                             isUnread ? 'text-white' : 'text-gray-300'
                           }`}>
                             {notification.title}
@@ -270,7 +270,7 @@ export default function NotificationList({ onStatsUpdate }) {
                         </div>
                       </div>
                       
-                      <p className="text-sm text-gray-400 mb-3 line-clamp-2 break-words whitespace-normal">
+                      <p className="text-sm text-gray-400 mb-3 line-clamp-3 break-words whitespace-normal">
                         {notification.message}
                       </p>
                       

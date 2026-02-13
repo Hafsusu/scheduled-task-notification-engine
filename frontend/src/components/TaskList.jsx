@@ -22,7 +22,7 @@ import {
   Activity
 } from "lucide-react";
 
-export default function TaskList({ refreshTrigger }) {
+export default function TaskList({ refreshTrigger, onStatsUpdate }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedTask, setSelectedTask] = useState(null);
