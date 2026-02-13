@@ -131,7 +131,7 @@ The Task Creation Flow
 
 The Data Flow Summary
 
-
+![Data Flow Summary Diagram](backend/docs/images/data_flow_summary.drawio.png)
 
 # Setup Instructions
 
